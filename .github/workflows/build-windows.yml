@@ -1,6 +1,7 @@
 name: PyInstaller Windows
 
 on:
+  workflow_dispatch:
   push:
       branches: [ master ]
 
@@ -11,9 +12,9 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v2.4.2
     - name: Set up Python 3.9
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v4.1.0
       with:
         python-version: 3.9
     - name: Install dependencies
@@ -24,7 +25,7 @@ jobs:
       run: |
         pyinstaller --onefile app/app.spec
     - name: Upload exe
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3.1.0
       with:
         name: Image Tools Windows
         path: dist/Image Tools.exe
